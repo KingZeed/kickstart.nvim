@@ -114,9 +114,9 @@ vim.opt.showmode = false
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
-end)
+-- vim.schedule(function()
+--   vim.opt.clipboard = 'unnamedplus'
+-- end)
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -163,6 +163,12 @@ vim.opt.confirm = true
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
+
+-- My keymaps
+vim.keymap.set('i', 'jk', '<Esc>', { noremap = true })
+vim.keymap.set('n', 'ö', '{', { noremap = true })
+vim.keymap.set('n', 'ä', '}', { noremap = true })
+vim.keymap.set('n', '+', '$', { noremap = true })
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
@@ -664,8 +670,8 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
-        -- gopls = {},
-        -- pyright = {},
+        gopls = {},
+        pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -673,7 +679,17 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
+        ts_ls = {},
+        -- Web development
+        -- Since all of these are using default settings it's overkill to have them here
+        html = {},
+        tailwindcss = {},
+        cssls = {},
+        -- Maybe replace this typescript ls with the typescript-tools.nvim
+        -- plugin if it gets slow, or if I want more tools.
+        jsonls = {},
+        volar = {},
+        emmet_language_server = {},
         --
 
         lua_ls = {
